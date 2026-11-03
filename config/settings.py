@@ -23,12 +23,16 @@ load_dotenv(BASE_DIR / ".env")
 # See https://docs.djangoproject.com/en/6.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.getenv("DJANGO_SECRET_KEY","django-insecure-local-development-key")
+SECRET_KEY = os.getenv("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = os.getenv("DEBUG", "False").lower() == "true"
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    host.strip()
+    for host in os.getenv("ALLOWED_HOSTS", "127.0.0.1,localhost").split(",")
+    if host.strip()
+]
 
 
 # Application definition
@@ -45,6 +49,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    "whitenoise.middleware.WhiteNoiseMiddleware",
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -133,3 +138,40 @@ MAILERS = {
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
+
+
+STATIC_URL = "static/"
+
+STATIC_ROOT = BASE_DIR / "staticfiles"
+
+STORAGES = {
+    "staticfiles": {
+        "BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage",
+    },
+}
+
+MAILERS = {
+    "default": {
+        "BACKEND": "django.core.mail.backends.smtp.EmailBackend",
+        "OPTIONS": {
+            "host": "smtp.gmail.com",
+            "port": 587,
+            "use_tls": True,
+            "username": os.getenv("EMAIL_HOST_USER"),
+            "password": os.getenv("EMAIL_HOST_PASSWORD"),
+        },
+    },
+}
+
+# HTTPS security settings
+SECURE_SSL_REDIRECT = True
+
+SESSION_COOKIE_SECURE = True
+
+CSRF_COOKIE_SECURE = True
+
+SECURE_HSTS_SECONDS = 31536000
+
+SECURE_HSTS_INCLUDE_SUBDOMAINS = True
+
+SECURE_HSTS_PRELOAD = True

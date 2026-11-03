@@ -524,18 +524,32 @@ footer {
     box-shadow: 0 20px 80px #000a;
 }
 
-.chat-header {
+/* .chat-header {
     padding: 18px;
     display: flex;
     justify-content: space-between;
     align-items: center;
     background: #172b4d;
+} */
+/* Chatbot header */
+.chat-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    padding: 12px 15px;
 }
 
 .chat-header small {
     display: block;
     margin-top: 6px;
     color: #a5c9ff;
+}
+
+/* Delete chat button */
+#clearChat {
+    position: static;
+    margin-right: auto;
 }
 
 .close-chat {
@@ -608,6 +622,32 @@ footer {
     color: #93c5fd;
     padding: 5px 15px;
     font-size: 12px;
+}
+
+/* Close chatbot button */
+.close-chat {
+    position: static;
+    margin-left: 10px;
+    flex-shrink: 0;
+    font-size: 26px;
+    line-height: 1;
+}
+
+.close-chat {
+    position: absolute;
+    top: 10px;
+    right: 12px;
+    background: transparent;
+    border: none;
+    color: white;
+    font-size: 28px;
+    cursor: pointer;
+    line-height: 1;
+    z-index: 10;
+}
+
+.close-chat:hover {
+    opacity: 0.7;
 }
 
 /* RESPONSIVE */
@@ -2120,6 +2160,168 @@ body {
 
 }
 
+/* CHAT HEADER */
+
+.chat-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+
+.chat-header-info {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.chat-header-info h3 {
+    color: white;
+    font-size: 15px;
+    margin: 0;
+}
+
+.chat-status {
+    color: #4ade80;
+    font-size: 11px;
+}
+
+.chat-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: rgba(83,109,254,0.2);
+    color: #a5b1ff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.clear-chat-btn {
+    background: transparent;
+    border: none;
+    color: #929bb5;
+    cursor: pointer;
+    padding: 8px;
+}
+
+.clear-chat-btn:hover {
+    color: #ff7373;
+}
+
+/* CHAT MESSAGES */
+
+.chat-messages {
+    padding: 18px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    overflow-y: auto;
+}
+
+.chat-message {
+    max-width: 85%;
+    padding: 12px 15px;
+    border-radius: 13px;
+    line-height: 1.6;
+    font-size: 13px;
+}
+
+.chat-message p {
+    margin: 0;
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+}
+
+.bot-message {
+    align-self: flex-start;
+    background: rgba(255,255,255,0.08);
+    color: #e0e5f5;
+}
+
+.user-message {
+    align-self: flex-end;
+    background: #536dfe;
+    color: white;
+}
+
+/* TYPING INDICATOR */
+
+.typing-indicator {
+    padding: 10px 18px;
+    color: #aab2ca;
+    font-size: 12px;
+}
+
+.typing-indicator[hidden] {
+    display: none;
+}
+
+.typing-indicator span {
+    display: inline-block;
+    width: 6px;
+    height: 6px;
+    margin-right: 4px;
+    background: #9baaff;
+    border-radius: 50%;
+    animation: typing 1s infinite alternate;
+}
+
+.typing-indicator span:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+.typing-indicator span:nth-child(3) {
+    animation-delay: 0.4s;
+}
+
+@keyframes typing {
+    from {
+        opacity: 0.3;
+        transform: translateY(0);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(-4px);
+    }
+}
+
+/* CHAT INPUT */
+
+.chat-input-form {
+    display: flex;
+    gap: 10px;
+    padding: 14px;
+    border-top: 1px solid rgba(255,255,255,0.1);
+}
+
+.chat-input-form input {
+    flex: 1;
+    min-width: 0;
+    padding: 12px;
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 9px;
+    outline: none;
+    color: white;
+}
+
+.chat-input-form button {
+    padding: 11px 14px;
+    border: none;
+    border-radius: 9px;
+    background: #536dfe;
+    color: white;
+    cursor: pointer;
+}
+
+.chat-input-form button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
 </style>
 </head>
 
@@ -2971,48 +3173,76 @@ body {
 </button>
 
 <div class="chat-window" id="chatWindow">
+    <button type="button" id="closeChat" class="close-chat" aria-label="Close chatbot">
+    &times;
+    </button>
 
-    <div class="chat-header">
+    <!-- CHAT HEADER -->
+<div class="chat-header">
+
+    <div class="chat-header-info">
+        <div class="chat-avatar">
+            <i data-lucide="bot"></i>
+        </div>
 
         <div>
-            <strong>Rohit's AI Assistant</strong>
-            <small>● Portfolio Assistant</small>
+            <h3>Rohit's AI Assistant</h3>
+            <span class="chat-status">Online</span>
         </div>
-
-        <button class="close-chat" id="closeChat"
-                aria-label="Close chatbot">×</button>
-
     </div>
 
-    <div class="chat-messages" id="chatMessages">
+    <button
+        type="button"
+        id="clearChat"
+        class="clear-chat-btn"
+        aria-label="Clear conversation"
+    >
+        <i data-lucide="trash-2"></i>
+    </button>
 
-        <div class="message bot">
-            Hi, I am the AI assistant of Rohit Kumar Rawat.
+</div>
+    <!-- CHAT MESSAGES -->
+<div class="chat-messages" id="chatMessages">
+
+    <div class="chat-message bot-message">
+        <p>
+            Hi! I am the AI assistant of Rohit Kumar Rawat.
             Welcome to this portfolio website!
-            You can ask me any question regarding him.
-        </div>
-
+            You can ask me questions about his skills,
+            projects, education and experience.
+        </p>
     </div>
 
-    <div class="typing" id="typing" hidden>
-        AI is thinking...
-    </div>
+</div>
 
-    <form class="chat-form" id="chatForm"
-          data-chat-url="{% url 'chat_api' %}">
+    <!-- TYPING INDICATOR -->
+<div id="typingIndicator" class="typing-indicator" hidden>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <small>AI is thinking...</small>
+</div>
 
-        {% csrf_token %}
+    <!-- CHAT FORM -->
+<form id="chatForm"
+      class="chat-input-form"
+      data-chat-url="{% url 'chat_api' %}">
 
-        <input type="text" id="userInput"
-               placeholder="Ask about Rohit..."
-               maxlength="1500" required>
+    {% csrf_token %}
 
-        <button type="submit" id="sendButton"
-                aria-label="Send message">
-            <i data-lucide="send"></i>
-        </button>
+    <input
+        type="text"
+        id="userInput"
+        placeholder="Ask me anything..."
+        autocomplete="off"
+    >
 
-    </form>
+    <button type="submit" id="sendButton">
+        <i data-lucide="send"></i>
+    </button>
+
+</form>
 
 </div>
 
@@ -3168,147 +3398,132 @@ if (!reduceMotion) {
 
 
 // CHATBOT
-
 const chatToggle = document.getElementById("chatToggle");
 const chatWindow = document.getElementById("chatWindow");
 const closeChat = document.getElementById("closeChat");
 
+if (closeChat && chatWindow) {
+    closeChat.addEventListener("click", function () {
+        chatWindow.style.display = "none";
+        chatToggle.setAttribute("aria-expanded", "false");
+    });
+}
 const chatForm = document.getElementById("chatForm");
-const userInput = document.getElementById("userInput");
+const chatInput = document.getElementById("userInput");
 const chatMessages = document.getElementById("chatMessages");
-
-const typing = document.getElementById("typing");
+const typingIndicator = document.getElementById("typingIndicator");
+const clearChatButton = document.getElementById("clearChat");
 const sendButton = document.getElementById("sendButton");
 
-const conversation = [];
+let conversationHistory = [];
 
-conversation.push({
-    role: "assistant",
-    content: "Hi, I am the AI assistant of Rohit Kumar Rawat. Welcome to this portfolio website! You can ask me any question regarding him."
-});
+// Open and close the chatbot window.
+if (chatToggle && chatWindow) {
+    chatToggle.addEventListener("click", function () {
+        const isOpening = getComputedStyle(chatWindow).display === "none";
+        chatWindow.style.display = isOpening ? "flex" : "none";
+        chatToggle.setAttribute("aria-expanded", String(isOpening));
 
-
-// OPEN CHAT
-
-chatToggle.addEventListener("click", () => {
-
-    chatWindow.style.display = "flex";
-    chatToggle.style.display = "none";
-
-    userInput.focus();
-
-});
-
-
-// CLOSE CHAT
-
-closeChat.addEventListener("click", () => {
-
-    chatWindow.style.display = "none";
-    chatToggle.style.display = "block";
-
-});
-
-
-// DISPLAY MESSAGE
-
-function addMessage(message, sender) {
-
-    const div = document.createElement("div");
-
-    div.className = "message " + sender;
-    div.textContent = message;
-
-    chatMessages.appendChild(div);
-
-    chatMessages.scrollTop = chatMessages.scrollHeight;
-
+        if (isOpening && chatInput) {
+            chatInput.focus();
+        }
+    });
 }
 
+// Read the Django CSRF token.
+function getCsrfToken() {
+    const csrfInput = document.querySelector('[name="csrfmiddlewaretoken"]');
+    return csrfInput ? csrfInput.value : "";
+}
 
-// SEND MESSAGE
+// Add a message safely to the chat window.
+function addMessage(role, content) {
+    if (!chatMessages) return;
 
-chatForm.addEventListener("submit", async (event) => {
+    const messageDiv = document.createElement("div");
+    messageDiv.className = role === "user"
+        ? "chat-message user-message"
+        : "chat-message bot-message";
 
-    event.preventDefault();
+    const paragraph = document.createElement("p");
+    paragraph.textContent = content;
+    messageDiv.appendChild(paragraph);
+    chatMessages.appendChild(messageDiv);
+    chatMessages.scrollTop = chatMessages.scrollHeight;
+}
 
-    const question = userInput.value.trim();
+// Send the conversation to the Django chatbot endpoint.
+async function sendMessage(message) {
+    conversationHistory.push({ role: "user", content: message });
 
-    if (!question || sendButton.disabled) return;
-
-    addMessage(question, "user");
-
-    conversation.push({
-        role: "user",
-        content: question
-    });
-
-    userInput.value = "";
-
-    sendButton.disabled = true;
-    typing.hidden = false;
+    if (typingIndicator) typingIndicator.hidden = false;
+    if (sendButton) sendButton.disabled = true;
+    if (chatInput) chatInput.disabled = true;
 
     try {
-
-        const csrfToken = document.querySelector(
-            '[name="csrfmiddlewaretoken"]'
-        ).value;
-
-        const response = await fetch(
-            chatForm.dataset.chatUrl,
-            {
-                method: "POST",
-
-                headers: {
-                    "Content-Type": "application/json",
-                    "X-CSRFToken": csrfToken
-                },
-
-                body: JSON.stringify({
-                    messages: conversation
-                })
-            }
-        );
+        const response = await fetch(chatForm.dataset.chatUrl, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                "X-CSRFToken": getCsrfToken()
+            },
+            body: JSON.stringify({ messages: conversationHistory })
+        });
 
         const data = await response.json();
 
         if (!response.ok) {
-            throw new Error(
-                data.error || "AI request failed."
-            );
+            throw new Error(data.error || "Something went wrong.");
         }
 
-        addMessage(data.reply, "bot");
-
-        conversation.push({
-            role: "assistant",
-            content: data.reply
-        });
-
-    }
-
-    catch (error) {
-
-        conversation.pop();
-
+        const reply = data.reply || "The assistant returned an empty response.";
+        conversationHistory.push({ role: "assistant", content: reply });
+        addMessage("assistant", reply);
+    } catch (error) {
+        console.error("Chatbot error:", error);
+        conversationHistory.pop();
         addMessage(
-            error.message || "Unable to connect to AI.",
-            "bot"
+            "assistant",
+            error.message || "Sorry, something went wrong. Please try again."
         );
-
+    } finally {
+        if (typingIndicator) typingIndicator.hidden = true;
+        if (sendButton) sendButton.disabled = false;
+        if (chatInput) {
+            chatInput.disabled = false;
+            chatInput.focus();
+        }
     }
+}
 
-    finally {
+// Handle chatbot form submission.
+if (chatForm && chatInput) {
+    chatForm.addEventListener("submit", async function (event) {
+        event.preventDefault();
 
-        typing.hidden = true;
-        sendButton.disabled = false;
-        userInput.focus();
+        const message = chatInput.value.trim();
+        if (!message || (sendButton && sendButton.disabled)) return;
 
-    }
+        addMessage("user", message);
+        chatInput.value = "";
+        await sendMessage(message);
+    });
+}
 
-});
+// Clear the current conversation.
+if (clearChatButton && chatMessages) {
+    clearChatButton.addEventListener("click", function () {
+        conversationHistory = [];
+        chatMessages.innerHTML = "";
+        addMessage(
+            "assistant",
+            "Hi! I am the AI assistant of Rohit Kumar Rawat. How can I help you?"
+        );
+    });
+}
 
 </script>
+
 <script type="module">
 import * as THREE from
 "https://cdn.jsdelivr.net/npm/three@0.180.0/build/three.module.js";
@@ -3470,7 +3685,7 @@ if (!canvas) {
         "(prefers-reduced-motion: reduce)"
     ).matches;
 
-    let animationId;
+let animationId;
 
     
 function animate() {
