@@ -2504,11 +2504,12 @@ body {
             <div class="about-image-wrapper">
 
                 {% if about and about.profile_image %}
-                    <img
+                    <!-- <img
                         src="{{ about.profile_image.url }}"
                         alt="{{ about.name }}"
                         class="about-profile-image"
-                    >
+                    > -->
+                    <img src="{% static 'core/files/profile.jpg' %}" alt="Rohit">
                 {% else %}
                     <div class="about-image-placeholder">
                         <i data-lucide="user-round"></i>
