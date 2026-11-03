@@ -1,0 +1,282 @@
+[
+{
+  "model": "core.skill",
+  "pk": 1,
+  "fields": {
+    "name": "Python",
+    "category": "Programming",
+    "description": "",
+    "is_active": true,
+    "created_at": "2026-11-03T12:03:24.708Z"
+  }
+},
+{
+  "model": "core.skill",
+  "pk": 2,
+  "fields": {
+    "name": "C",
+    "category": "Programming",
+    "description": "",
+    "is_active": true,
+    "created_at": "2026-11-03T12:03:36.192Z"
+  }
+},
+{
+  "model": "core.skill",
+  "pk": 3,
+  "fields": {
+    "name": "Django",
+    "category": "Frameworks",
+    "description": "",
+    "is_active": true,
+    "created_at": "2026-11-03T12:05:21.876Z"
+  }
+},
+{
+  "model": "core.skill",
+  "pk": 4,
+  "fields": {
+    "name": "Flask",
+    "category": "Frameworks",
+    "description": "",
+    "is_active": true,
+    "created_at": "2026-11-03T12:05:32.240Z"
+  }
+},
+{
+  "model": "core.skill",
+  "pk": 5,
+  "fields": {
+    "name": "MySQL",
+    "category": "Database",
+    "description": "",
+    "is_active": true,
+    "created_at": "2026-11-03T12:05:52.208Z"
+  }
+},
+{
+  "model": "core.skill",
+  "pk": 6,
+  "fields": {
+    "name": "HTML",
+    "category": "Programming",
+    "description": "",
+    "is_active": true,
+    "created_at": "2026-11-03T12:06:09.904Z"
+  }
+},
+{
+  "model": "core.skill",
+  "pk": 7,
+  "fields": {
+    "name": "JavaScripts",
+    "category": "Programming",
+    "description": "",
+    "is_active": true,
+    "created_at": "2026-11-03T12:08:07.621Z"
+  }
+},
+{
+  "model": "core.skill",
+  "pk": 8,
+  "fields": {
+    "name": "TypeScript",
+    "category": "Programming",
+    "description": "",
+    "is_active": true,
+    "created_at": "2026-11-03T12:08:20.235Z"
+  }
+},
+{
+  "model": "core.skill",
+  "pk": 9,
+  "fields": {
+    "name": "CSS",
+    "category": "Programming",
+    "description": "",
+    "is_active": true,
+    "created_at": "2026-11-03T12:08:31.021Z"
+  }
+},
+{
+  "model": "core.skill",
+  "pk": 10,
+  "fields": {
+    "name": "SQL",
+    "category": "Programming",
+    "description": "",
+    "is_active": true,
+    "created_at": "2026-11-03T12:08:39.634Z"
+  }
+},
+{
+  "model": "core.skill",
+  "pk": 11,
+  "fields": {
+    "name": "React.js",
+    "category": "Frameworks",
+    "description": "",
+    "is_active": true,
+    "created_at": "2026-11-03T12:08:59.462Z"
+  }
+},
+{
+  "model": "core.skill",
+  "pk": 12,
+  "fields": {
+    "name": "Vs Code",
+    "category": "Tools",
+    "description": "",
+    "is_active": true,
+    "created_at": "2026-11-03T12:09:22.611Z"
+  }
+},
+{
+  "model": "core.skill",
+  "pk": 13,
+  "fields": {
+    "name": "Postman",
+    "category": "Tools",
+    "description": "",
+    "is_active": true,
+    "created_at": "2026-11-03T12:09:38.460Z"
+  }
+},
+{
+  "model": "core.skill",
+  "pk": 14,
+  "fields": {
+    "name": "Prompt Enginnering",
+    "category": "AI/ML",
+    "description": "",
+    "is_active": true,
+    "created_at": "2026-11-03T12:10:10.605Z"
+  }
+},
+{
+  "model": "core.skill",
+  "pk": 15,
+  "fields": {
+    "name": "Linux",
+    "category": "DEVOPS & CLOUD",
+    "description": "",
+    "is_active": true,
+    "created_at": "2026-11-03T12:13:22.528Z"
+  }
+},
+{
+  "model": "core.skill",
+  "pk": 16,
+  "fields": {
+    "name": "Render",
+    "category": "DEVOPS & CLOUD",
+    "description": "",
+    "is_active": true,
+    "created_at": "2026-11-03T12:13:39.126Z"
+  }
+},
+{
+  "model": "core.skill",
+  "pk": 17,
+  "fields": {
+    "name": "Vercel",
+    "category": "DEVOPS & CLOUD",
+    "description": "",
+    "is_active": true,
+    "created_at": "2026-11-03T12:13:54.941Z"
+  }
+},
+{
+  "model": "core.skill",
+  "pk": 18,
+  "fields": {
+    "name": "PythonAnyWhere",
+    "category": "DEVOPS & CLOUD",
+    "description": "",
+    "is_active": true,
+    "created_at": "2026-11-03T12:14:08.841Z"
+  }
+},
+{
+  "model": "core.skill",
+  "pk": 19,
+  "fields": {
+    "name": "Git",
+    "category": "DEVOPS & CLOUD",
+    "description": "",
+    "is_active": true,
+    "created_at": "2026-11-03T12:14:23.922Z"
+  }
+},
+{
+  "model": "core.skill",
+  "pk": 20,
+  "fields": {
+    "name": "LLM",
+    "category": "AI/ML",
+    "description": "",
+    "is_active": true,
+    "created_at": "2026-11-03T19:34:14.640Z"
+  }
+},
+{
+  "model": "core.project",
+  "pk": 2,
+  "fields": {
+    "title": "Blog Application",
+    "description": "Developed a blogging platform that allows users to publish blog posts and read content shared by other users.\r\n• Implemented backend functionality using Django to manage blog creation, content retrieval, and database operations.\r\n• Integrated MySQL for persistent data storage and Bootstrap for responsive interface components.",
+    "technologies": [
+      "Python",
+      "Django",
+      "MySQL",
+      "Bootstrap"
+    ],
+    "github_url": "",
+    "live_url": "",
+    "is_featured": false,
+    "is_active": true,
+    "created_at": "2026-11-03T12:31:33.419Z"
+  }
+},
+{
+  "model": "core.education",
+  "pk": 1,
+  "fields": {
+    "degree": "Bachelor of Technology in Computer Science and Engineering",
+    "institution": "I.E.S University,Bhopal",
+    "field_of_study": "Computer Sciencs",
+    "start_year": 2024,
+    "end_year": 2017,
+    "cgpa": "8,.39",
+    "description": "Third-year Computer Science student interested in full-stack development and machine learning. Experienced in building web\r\napplications using Python, Django, React, and relational databases. Seeking a software engineering internship or entry-level\r\nopportunity.",
+    "is_current": true,
+    "is_active": true
+  }
+},
+{
+  "model": "core.resume",
+  "pk": 1,
+  "fields": {
+    "title": "My Resume",
+    "file": "resumes/resume.pdf",
+    "uploaded_at": "2026-11-03T13:21:48.133Z",
+    "is_active": true
+  }
+},
+{
+  "model": "core.about",
+  "pk": 1,
+  "fields": {
+    "name": "Rohit Kumar Rawat",
+    "short_intro": "I'm Rohit Kumar Rawat, a Computer Science and Technology student passionate about Python Backend Development, Full-Stack Development and AI. I enjoy building web applications, solving coding challenges and exploring emerging technologies. I'm focused",
+    "description": "Hi, I'm **Rohit Kumar Rawat**, a Computer Science and Technology student at IES University, Bhopal.\r\n\r\nI'm an aspiring Python Backend Developer with an interest in Full-Stack Development and Artificial Intelligence. I work with Python, Django, MySQL, HTML, CSS and JavaScript, and I'm continuously strengthening my skills in Data Structures and Algorithms, Machine Learning and Generative AI.\r\n\r\nI've built projects including a Django-based Blog Application and a Stock Prediction Portal using Machine Learning. I enjoy solving programming problems, exploring new technologies and turning ideas into practical applications.\r\n\r\nMy goal is to become a skilled software engineer who builds scalable, efficient and useful technology solutions.",
+    "career_objective": "To pursue a challenging opportunity as a Software Developer or Python Backend Developer where I can apply my knowledge of Python, Django, databases, Data Structures and Algorithms, and modern web technologies.\r\n\r\nI aim to continuously improve my problem-solving and software development skills while gaining practical industry experience. My long-term objective is to contribute to the development of scalable backend systems and intelligent applications using Artificial Intelligence and Machine Learning.",
+    "profile_image": "profile/WhatsApp_Image_2026-11-02_at_8.29.13_PM.jpeg",
+    "github_url": "https://github.com/Rohit301005",
+    "linkedin_url": "https://www.linkedin.com/in/rohit-kumar-rawat-81bb35339/",
+    "email": "rohitkumarrrawat04@gmail.com",
+    "is_active": true,
+    "updated_at": "2026-11-03T13:31:17.324Z"
+  }
+}
+]
