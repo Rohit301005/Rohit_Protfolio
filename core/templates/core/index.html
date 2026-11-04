@@ -2372,6 +2372,10 @@ body {
     opacity: 0.5;
     cursor: not-allowed;
 }
+.section-container {
+    width: min(1200px, 90%);
+    margin-inline: auto;
+}
 
 </style>
 </head>
@@ -3415,20 +3419,21 @@ if (!reduceMotion) {
     });
 
 
-    // Project cards
-
-    gsap.from(".project-card", {
-        opacity: 0,
-        y: 50,
-        duration: 0.8,
-        stagger: 0.2,
-
-        scrollTrigger: {
-            trigger: ".projects-grid",
-            start: "top 85%",
-            once: true
-        }
-    });
+     // Project cards (desktop only, so mobile never hides them)
+    if (window.innerWidth > 768) {
+        gsap.utils.toArray(".project-card").forEach(function (card) {
+            gsap.from(card, {
+                opacity: 0,
+                y: 40,
+                duration: 0.7,
+                scrollTrigger: {
+                    trigger: card,
+                    start: "top 92%",
+                    once: true
+                }
+            });
+        });
+    }
 
 
     // Contact animation
@@ -3572,7 +3577,9 @@ if (clearChatButton && chatMessages) {
         );
     });
 }
-
+window.addEventListener("load", function () {
+    ScrollTrigger.refresh();
+});
 </script>
 
 <script type="module">
