@@ -6,4 +6,5 @@ urlpatterns = [
 
     path('api/chat/', views.chat_api, name='chat_api'),
     path('contact/', views.contact_submit, name='contact_submit'),
+    path('health/', views.health, name='health'),
 ]
