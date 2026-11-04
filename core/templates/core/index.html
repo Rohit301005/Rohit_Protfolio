@@ -1646,6 +1646,40 @@ body {
 
 
 /* ABOUT SECTION */
+.about-section {
+    padding: 100px 0;
+}
+
+.about-section .section-container {
+    width: min(1200px, 90%);
+}
+
+.about-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
+    gap: 55px;
+    align-items: center;
+    margin-top: 50px;
+}
+
+.about-image-wrapper {
+    width: 100%;
+    max-width: 380px;
+    justify-self: center;
+    aspect-ratio: 4 / 5;
+    overflow: hidden;
+    border-radius: 25px;
+    border: 1px solid rgba(139, 156, 255, 0.3);
+    background: rgba(15, 23, 50, 0.8);
+}
+
+.about-profile-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+    display: block;
+}
 
 .about-section {
     padding: 100px 0;
@@ -2519,22 +2553,20 @@ body {
         <div class="about-grid">
 
             <!-- Profile Image -->
-            <div class="about-image-wrapper">
+            <!-- Profile Image -->
+<div class="about-image-wrapper">
 
-                {% if about and about.profile_image %}
-                    <!-- <img
-                        src="{{ about.profile_image.url }}"
-                        alt="{{ about.name }}"
-                        class="about-profile-image"
-                    > -->
-                    <img src="{% static 'core/files/profile.jpg' %}" alt="Rohit">
-                {% else %}
-                    <div class="about-image-placeholder">
-                        <i data-lucide="user-round"></i>
-                    </div>
-                {% endif %}
+    {% if about and about.profile_image %}
+        <img src="{% static 'core/files/profile.jpg' %}"
+             alt="{{ about.name|default:'Rohit Kumar Rawat' }}"
+             class="about-profile-image">
+    {% else %}
+        <div class="about-image-placeholder">
+            <i data-lucide="user-round"></i>
+        </div>
+    {% endif %}
 
-            </div>
+</div>
 
             <!-- About Content -->
             <div class="about-content">
@@ -2678,20 +2710,20 @@ body {
 
                         <div class="skill-track">
                             <div class="skill-fill"
-                                style="width: {{ skill.proficiency|default:'0' }}%;">
+                                style="width: {{ skill.proficiency|default:'0' }}%;"></div>
                             </div>
 
                         {% if skill.description %}
                             <p>{{ skill.description }}</p>
                         {% endif %}
 
+                        </div>
+
+                        {% endfor %}
+
                     </div>
 
-                    {% endfor %}
-
                 </div>
-
-            </div>
 
             {% empty %}
 
