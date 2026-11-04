@@ -2444,28 +2444,29 @@ body {
 
         <div class="hero-buttons">
 
-                <a href="#projects" class="btn btn-primary">
-                    Explore Projects
-                    <i data-lucide="arrow-up-right"></i>
-                </a>
+    <a href="#projects" class="btn btn-primary">
+        Explore Projects
+        <i data-lucide="arrow-up-right"></i>
+    </a>
 
-                {% if resume %}
-                    <a href="{{ resume.file.url }}"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    class="btn btn-outline">
+    {% if resume %}
+        <a href="{% static 'core/files/resume.pdf' %}"
+           target="_blank"
+           rel="noopener noreferrer"
+           download="Rohit_Resume.pdf"
+           class="btn btn-outline">
+            Download Resume
+            <i data-lucide="download"></i>
+        </a>
+    {% else %}
+        <span class="btn btn-outline" style="opacity: 0.6;">
+            Resume Coming Soon
+        </span>
+    {% endif %}
 
-                        Download Resume
-                        <i data-lucide="download"></i>
+</div>
 
-                    </a>
-                {% else %}
-                    <span class="btn btn-outline" style="opacity: 0.6;">
-                        Resume Coming Soon
-                    </span>
-                {% endif %}
 
-        </div>
 
         <div class="hero-socials">
             <a href="https://github.com/Rohit301005"
@@ -2504,12 +2505,12 @@ body {
             <div class="about-image-wrapper">
 
                 {% if about and about.profile_image %}
-                    <img
+                    <!-- <img
                         src="{{ about.profile_image.url }}"
                         alt="{{ about.name }}"
                         class="about-profile-image"
-                    >
-                    <!-- <img src="{% static 'core/files/profile.jpg' %}" alt="Rohit"> -->
+                    > -->
+                    <img src="{% static 'core/files/profile.jpg' %}" alt="Rohit">
                 {% else %}
                     <div class="about-image-placeholder">
                         <i data-lucide="user-round"></i>
